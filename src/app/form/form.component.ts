@@ -8,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class FormComponent implements OnInit {
 
   constructor() { }
-
+  vara=10;
+  showSpinner=false;
+  loadData(){
+    this.showSpinner=true;
+    setTimeout(()=>{
+      this.showSpinner =false;
+    },50000)
+  }
   ngOnInit() {
   }
 

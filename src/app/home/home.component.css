@@ -1,0 +1,19 @@
+.navbar{
+    justify-content: space-between;
+    justify-self: left;
+}
+a{
+    color: white;
+    padding-right: 1rem;
+    justify-self: right;
+}
+mat-sidenav-container{
+    height:100%
+}
+mat-sidenav,mat-sidenav-content{
+    padding:16px;
+}
+mat-sidenav{
+    background-color:blue;
+    width:200px;     
+}

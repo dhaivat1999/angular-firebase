@@ -1,0 +1,23 @@
+<app-navbars>
+</app-navbars>
+<mat-sidenav-container>
+        <mat-sidenav [(opened)]="opened" mode="side">
+                <button mat-button color="accent">Home</button>
+                <button mat-button color="accent" >Sign Up</button>
+                <button mat-button color="accent" >Sign Up Form</button>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <mat-icon (click)="opened=!opened" color="primary">reorder</mat-icon>
+            <mat-card>
+                    <mat-card-header>
+                        <h3>Sign Up Form</h3>
+                    </mat-card-header>
+                    <mat-card-content>
+                <app-form></app-form>
+                </mat-card-content> 
+                <mat-card-actions>
+                        <button mat-raised-button color="primary"  matTooltip="By clicking on this you agree to the terms and conditions">Sign Up</button>
+                        </mat-card-actions>
+                        </mat-card>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
