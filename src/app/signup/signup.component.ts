@@ -7,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
   opened=false;
+  hide = true;
+  submit(userForm)
+    {
+      console.log("Form Submitted",userForm);
+    }
   constructor() { }
 
+    
   ngOnInit() {
   }
 

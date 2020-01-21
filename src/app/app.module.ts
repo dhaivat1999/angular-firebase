@@ -7,21 +7,16 @@ import { environment } from './../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormComponent } from './form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSidenavModule,MatToolbarModule,MatButtonModule,MatCardModule,MatTooltipModule,MatIconModule,MatBadgeModule,MatProgressSpinnerModule } from '@angular/material';
+import { MatInputModule,MatNativeDateModule,MatFormFieldModule,MatDatepickerModule,MatExpansionModule,MatGridListModule,MatRadioModule,MatSidenavModule,MatToolbarModule,MatButtonModule,MatCardModule,MatTooltipModule,MatIconModule,MatBadgeModule,MatProgressSpinnerModule, MatInput } from '@angular/material';
 import { NavbarsComponent } from './navbars/navbars.component';
 import {FormsModule} from '@angular/forms';
-import { RoutingComponent } from './routing/routing.component';
 import {RouterModule,Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
-  import {NgbSlide} from '@ng-bootstrap/ng-bootstrap';
-  import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
-  import {NgTemplate} from 'ng-template';
-// import { MatButtonToggleModule } from '@angular/material/button-toggle';
-// import { MatDatepickerModule } from '@angular/material/datepicker';
-// import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import { AddbookComponent } from './addbook/addbook.component';
+
 
 const appRoutes:Routes=[
   {
@@ -29,6 +24,9 @@ const appRoutes:Routes=[
   },
   {
     path:'signup',component:SignupComponent
+  },
+  {
+    path:'addbook',component:AddbookComponent
   }
 ]
 @NgModule({
@@ -36,9 +34,9 @@ const appRoutes:Routes=[
     AppComponent,
     FormComponent,
     NavbarsComponent,
-    RoutingComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    AddbookComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +56,17 @@ const appRoutes:Routes=[
      RouterModule.forRoot(appRoutes),
      NgbModule,
      NgbCarouselModule,
-    //  NgTemplate,
+     MatRadioModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule
+    //  NgTemplate,  
+     
     //  NgbCarouselConfig,
-    //   NgbSlide
+    // NgbSlide
     
     // MatButtonToggleModule,
     // MatDatepickerModule,

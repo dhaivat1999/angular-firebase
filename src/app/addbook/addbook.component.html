@@ -1,0 +1,82 @@
+<app-navbars>
+    </app-navbars>
+    <mat-sidenav-container>
+            <mat-sidenav [(opened)]="opened" mode="side">
+                   <a href="/home"><button mat-button color="accent">Home</button></a> 
+                   <a href="/signup"><button mat-button color="accent">Sign Up</button></a> 
+                   <a href="/addbook"><button mat-button color="accent">Add Book</button></a> 
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <mat-icon (click)="opened=!opened" color="primary">reorder</mat-icon>
+                <mat-card>
+                        <mat-card-header>
+                            <h3>Add the Book you want to sell</h3>
+                        </mat-card-header>
+                        <mat-card-content>
+                                <form>
+                                        <div class="form-group">
+                                                <label for="bookTitle">Enter the Title of the Book</label>
+                                                <input type="text" class="form-control" id="bookTitle" aria-describedby="emailHelp" placeholder="Enter title of the Book">
+                                              </div>
+                                             <div class="form-group">
+                                                <label for="bookSubTitle">Enter the Subtitle of the Book</label>
+                                                <input type="text" class="form-control" id="bookSubTitle" aria-describedby="emailHelp" placeholder="Enter Sub title of the Book">
+                                              </div>
+                                    <div class="form-group">
+                                      <label for="bookAuthor1">Enter the Name of the First Author</label>
+                                      <input type="email" class="form-control" id="bookAuthor1" aria-describedby="emailHelp" placeholder="Enter name of Author">
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="bookAuthor2">Enter the Name of the Second Author</label>
+                                            <input type="email" class="form-control" id="bookAuthor2" aria-describedby="emailHelp" placeholder="Enter name of Author">
+                                          </div>
+                                          <div class="form-group">
+                                                <label for="bookAuthor3">Enter the Name of the third Author</label>
+                                                <input type="email" class="form-control" id="bookAuthor3" aria-describedby="emailHelp" placeholder="Enter name of Author">
+                                              </div>
+                                              <div class="form-group">
+                                                    <label for="bookPublisher">Enter the Name of the Publication</label>
+                                                    <input type="email" class="form-control" id="bookPublisher" aria-describedby="emailHelp" placeholder="Enter name of Publication">
+                                                  </div>
+                                                  <div class="form-group">
+                                                        <label for="bookPrice">Enter the price of the book</label>
+                                                        <input type="email" class="form-control" id="bookPrice" aria-describedby="emailHelp" placeholder="Enter price of the Book">
+                                                      </div>
+                                                      <div class="form-group">
+                                                      <label id="example-radio-group-label">Select the Genre of the book</label>
+                                                      <mat-radio-group
+                                                        aria-labelledby="example-radio-group-label"
+                                                        class="example-radio-group"
+                                                        [(ngModel)]="bookGenre">
+                                                        <mat-radio-button class="example-radio-button" *ngFor="let genre of genres" [value]="genre">
+                                                          {{genre}}
+                                                        </mat-radio-button>
+                                                      </mat-radio-group>
+                                                   </div>
+                                                   <div class="form-group">
+                                                      <label>
+                                                          Select image of the book
+                                                      </label>
+                                                      <label class="image-upload-container btn btn-bwm">
+                                                            <input #imageInput
+                                                                   type="file"
+                                                                   accept="image/*"
+                                                                   (change)="processFile(imageInput)">
+                                                          </label>
+                                                          </div>
+                                    <!-- <mat-icon color="primary">wifi</mat-icon> -->
+                                    <!-- <p>
+                                        Demo for batch
+                                        <button mat-raised-button color="primary">
+                                          Action
+                                        </button>
+                                      </p> -->
+                                    </form>
+                    </mat-card-content> 
+                    <mat-card-actions>
+                            <button mat-raised-button color="primary"  matTooltip="By clicking on this you agree to the terms and conditions">Add Book to sell</button>
+                            </mat-card-actions>
+                            </mat-card>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    
