@@ -1,0 +1,133 @@
+<app-navbars>
+</app-navbars>
+<mat-sidenav-container>
+        <mat-sidenav [(opened)]="opened" mode="side">
+                <button mat-button color="accent">Home</button>
+                <button mat-button color="accent" >Sign Up</button>
+                <button mat-button color="accent" >Sign Up Form</button>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <mat-icon (click)="opened=!opened" color="primary">reorder</mat-icon>
+            <mat-card>
+                    <mat-card-header>
+                        <h3>Sign Up Form</h3>
+                    </mat-card-header>
+                    <mat-card-content>
+                            <form #userForm="ngForm" (ngSubmit)="submit(userForm)" class="text-center border border-light p-5">
+                                 <div class="form-row mb-4">
+                                <div class="col">
+                                    <div class="md-form md-outline">
+                                            <input required ngModel type="text" mdbInput  #userFirstName="ngModel" class="form-control" name="userFirstName" aria-describedby="emailHelp">
+                                            <label for="userFirstName">Enter First Name</label>
+                                            <div *ngIf="userFirstName.touched && userFirstName.invalid" class="alert alert-danger" role="alert">
+                                                <p>Name is a neccesary field</p>
+                                            </div>
+                                            </div>
+                                        </div>
+                                         <div class="col">
+                                                <div class="md-form md-outline">
+                                            <label for="userLastName">Last Name</label>
+                                            <input ngModel type="text" mdbInput class="form-control" name="userLastName" aria-describedby="emailHelp" >
+                                          </div>
+                                          </div>
+                                        </div>
+                                <div class="md-form md-outline">
+                                  <label for="userEmail">Email address</label>
+                                  <input ngModel #userEmail="ngModel" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" required type="userEmail" mdbInput class="form-control" name="userEmail" aria-describedby="emailHelp">
+                                  <div *ngIf="userEmail.touched && userEmail.invalid" class="alert alert-danger" role="alert">
+                                        <p *ngIf="userEmail.errors.required">Email is a neccesary field</p>
+                                        <p *ngIf="userEmail.errors.pattern">Email is invalid</p>
+                                    </div>
+                                </div>
+                                <div class="md-form md-outline">
+                                    <label for="userPhone">
+                                        Enter Phone Number
+                                    </label>
+                                    <input ngModel type="number" required #userPhone="ngModel" pattern="(0/91)?[7-9][0-9]{9}" mdbInput class="form-control" name="userPhone" >
+                                    <div *ngIf="userPhone.touched && userPhone.invalid" class="alert alert-danger" role="alert">
+                                            <p *ngIf="userPhone.errors.required">Phone Number is a neccesary field</p>
+                                            <p *ngIf="userPhone.errors.pattern">Phone Number is invalid</p>
+                                        </div>
+                                </div>
+                               
+                                <div class="md-form md-outline">
+                                  <label for="userPassword">Password</label>
+                                  <input ngModel type="password" required #userPassword="ngModel" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" class="form-control" name="userPassword" mdbInput  [type]="hide ? 'password' : 'text'">
+                                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                        </button>
+                                          <div *ngIf="userPassword.touched && userPassword.invalid" class="alert alert-danger" role="alert">
+                                            <p *ngIf="userPassword.errors.required">Password is a required field</p>
+                                            <p *ngIf="userPassword.errors.pattern">Password must have atleast 8 characters, 1 uppercase,1 lowercase and a number/special character</p>
+                                        </div>
+                                </div>
+                                <div class="md-form md-outline">
+                                  <label for="userConfirmPassword">Confirm Password</label>
+                                  <input ngModel name="userConfirmPassword" #userConfirmPassword="ngModel" required type="password" mdbInput class="form-control" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" >
+                                  <div *ngIf="userConfirmPassword.touched && userConfirmPassword.invalid" class="alert alert-danger" role="alert">
+                                        <p *ngIf="userConfirmPassword.errors.required">Confirm Password is a required field</p>
+                                        <p *ngIf="userConfirmPassword.errors.pattern">Confirm Password must have atleast 8 characters, 1 uppercase,1 lowercase and a number/special character</p>
+                                        <!-- <p *ngIf="userConfirmPassword != userPassword">Passwords do not match</p> -->
+                                    </div>
+                                </div>
+                             
+                                        <!-- <div class="md-form md-outline">
+                                                <label for="userGender">Select your Gender</label>
+                                                <mat-radio-group   matInput name="userGender" [(ngModel)]="userGender">
+                                                  <mat-radio-button  class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+                                                   {{gender}}
+                                                  </mat-radio-button>
+                                                </mat-radio-group>
+                                             </div> -->
+                                    <div>
+                                        <div>
+                                            <label id="example-radio-group-label">Select Gender</label>
+                                            <mat-radio-group aria-labelledby="example-radio-group-label" name="radioGender" matInput  class="example-radio-group" [(ngModel)]="userGender">
+                                              <mat-radio-button class="example-radio-button"  *ngFor="let gender of genders" [value]="gender">
+                                                {{gender}}
+                                              </mat-radio-button>
+                                            </mat-radio-group>
+                                            </div>
+                                      
+                                <mat-form-field>
+                                    <div>    <label for="picker">Enter Date of Birth</label> </div>
+                                        <input matInput [matDatepicker]="picker" ngModel name="userBirthDate" >
+                                        <mat-datepicker-toggle  matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field>
+                                    </div>
+                                    <pre>
+                                            {{userForm.value | json}}
+                                        </pre>
+                                    
+                                <!-- <mat-icon color="primary">wifi</mat-icon> -->
+                                <!-- <p>
+                                    Demo for batch
+                                    <button mat-raised-button color="primary">
+                                      Action
+                                    </button>
+                                  </p> -->  
+                              
+                                <mat-card-actions>
+                                        <button type="submit" [disabled]="userForm.invalid" mdbBtn gradient="aqua" size="lg"   matTooltip="By clicking on this you agree to the terms and conditions">Sign Up</button>
+                                        </mat-card-actions>
+                                        <button class="btn btn-warning" type="button" (click)="resetForm()">Reset Form</button>
+                                        <!-- <button mdbBtn type="button" gradient="aqua" rounded="true" mdbWavesEffect>Aqua</button> -->
+                                        
+                                        <hr>
+      
+                                        <!-- Terms of service -->
+                                        <p>By clicking
+                                          <em>Sign up</em> you agree to our
+                                          <a href="" target="_blank">terms of service</a></p>
+                                    </form>
+                </mat-card-content> 
+           
+                        </mat-card>
+                        <!-- <button mdbBtn floating="true" size="lg" color="red" class="waves-light" mdbPageScroll href="#top-section" mdbWavesEffect style="right:35px; bottom:35px;" [pageScrollDuration]="750">
+                                <mdb-icon fas icon="arrow-up"></mdb-icon>
+                                    </button> -->
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+    
+   

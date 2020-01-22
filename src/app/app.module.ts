@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from 'angularfire2'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from './../environments/environment';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormComponent } from './form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule,MatNativeDateModule,MatFormFieldModule,MatDatepickerModule,MatExpansionModule,MatGridListModule,MatRadioModule,MatSidenavModule,MatToolbarModule,MatButtonModule,MatCardModule,MatTooltipModule,MatIconModule,MatBadgeModule,MatProgressSpinnerModule, MatInput } from '@angular/material';
@@ -16,7 +14,11 @@ import { SignupComponent } from './signup/signup.component';
  import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { AddbookComponent } from './addbook/addbook.component';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+import {UserService} from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes:Routes=[
   {
@@ -39,6 +41,7 @@ const appRoutes:Routes=[
     AddbookComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -62,7 +65,8 @@ const appRoutes:Routes=[
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MDBBootstrapModule.forRoot()
     //  NgTemplate,  
      
     //  NgbCarouselConfig,
@@ -73,7 +77,9 @@ const appRoutes:Routes=[
     // MatFormFieldModule,
     // MatFormField
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

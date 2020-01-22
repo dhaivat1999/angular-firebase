@@ -10,26 +10,17 @@
            
             <div class='container-fluid'>  
                     <div class='col-12'>  
-                        <ngb-carousel>  
-                            <ng-template ngbSlide>  
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROEXQE2zHf2lfnDSq0kdd1zFijmiN104RpODkyyRI2NPbhXD-Z" alt="Bangalore Metro">  
-                                <div class="carousel-caption">  
-                                    <h3>Delhi Metro</h3>  
-                                </div>  
-                            </ng-template>  
-                            <ng-template ngbSlide>  
-                                <img src="https://picsum.photos/id/1011/900/500" alt="Bangalore Metro">  
-                                <div class="carousel-caption">  
-                                    <h3>Bangalore Metro</h3>  
-                                </div>  
-                            </ng-template>  
-                            <ng-template ngbSlide>  
-                                <img src="https://picsum.photos/id/984/900/500" alt="Channai Metro">  
-                                <div class="carousel-caption">  
-                                    <h3>Channai Metro</h3>  
-                                </div>  
-                            </ng-template>  
-                        </ngb-carousel>  
+                            <mdb-carousel [animation]="'fade'">
+                                    <mdb-carousel-item>
+                                      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
+                                    </mdb-carousel-item>
+                                    <mdb-carousel-item>
+                                      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
+                                    </mdb-carousel-item>
+                                    <mdb-carousel-item>
+                                      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
+                                    </mdb-carousel-item>
+                                  </mdb-carousel>
                     </div>  
                 </div>  
                     <!-- <div>
@@ -60,7 +51,7 @@
                         <p>demo</p>
                     </mat-expansion-panel>
                     </div> -->
-
-
+                        <h1>Welcome new User {{userName}}</h1>
+                        <button (click)="getUserName()">Get user Name</button>
         </mat-sidenav-content>
     </mat-sidenav-container>

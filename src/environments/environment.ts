@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
    firebaseConfig:{
-    apiKey: "AIzaSyCjukIHcj854_8HeEp2i1mFgJCSBdp-DMA",
-    authDomain: "firm-dimension-137823.firebaseapp.com",
-    databaseURL: "https://firm-dimension-137823.firebaseio.com",
-    projectId: "firm-dimension-137823",
-    storageBucket: "firm-dimension-137823.appspot.com",
-    messagingSenderId: "733462202765",
-    appId: "1:733462202765:web:00efb018fe8db9da6655c4",
-    measurementId: "G-2X24ESEEXW"
+    apiKey: "AIzaSyBNWLT9c2XrCRlyDm0bBXDtQEx5xp86ZGw",
+    authDomain: "elegant-clarity-245511.firebaseapp.com",
+    databaseURL: "https://elegant-clarity-245511.firebaseio.com",
+    projectId: "elegant-clarity-245511",
+    storageBucket: "elegant-clarity-245511.appspot.com",
+    messagingSenderId: "526644482562",
+    appId: "1:526644482562:web:cf390f5b25cfe4d4738d1b",
+    measurementId: "G-6W0EM68QXS"
    }
 };
 
