@@ -1,4 +1,4 @@
-.navbar{
+/* .navbar{
     justify-content: space-between;
     justify-self: left;
 }
@@ -16,4 +16,13 @@ mat-sidenav,mat-sidenav-content{
 mat-sidenav{
     background-color:blue;
     width:200px;     
+} */
+mdb-navbar-brand{
+        font-size: 20px;
+        align-content: center;
+        padding-top: 15px;
+        padding-right: 50px;
+}
+a{
+    font-size: 20px
 }

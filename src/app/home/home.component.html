@@ -52,6 +52,10 @@
                     </mat-expansion-panel>
                     </div> -->
                         <h1>Welcome new User {{userName}}</h1>
+                        <pre>
+                            {{userList | json}}
+                            <!-- {{userName}} -->
+                        </pre>
                         <button (click)="getUserName()">Get user Name</button>
         </mat-sidenav-content>
     </mat-sidenav-container>

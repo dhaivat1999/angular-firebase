@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from 'selenium-webdriver/http';
 import { FirebaseServiceService } from './../services/firebase-service.service';
+import {Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -12,11 +13,12 @@ export class SignupComponent implements OnInit {
   userGender:String;
   genders:String[];
  
-  constructor(private FirebaseServiceService:FirebaseServiceService) { }
+  constructor(private FirebaseServiceService:FirebaseServiceService,private router:Router) { }
   submit(userForm)
   {
     console.log("Form Submitted",userForm);
     this.FirebaseServiceService.addUserToFirebase(userForm.value);
+    this.router.navigate(['/login'])
   }
 
   ngOnInit() {

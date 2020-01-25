@@ -1,12 +1,64 @@
 
 
-<mat-toolbar color="primary" class="navbar">
+<!-- <mat-toolbar color="primary" class="navbar">
         <div><a href="/home"  routerLinkActive="active">LibMS</a></div>
         <div >
             <a href="/home">Home</a>
             <a href="/signup">Sign Up</a>
             <a href="/addbook">Add Book</a>
-            <!-- <span>Sign Up Form</span> -->
+             <span>Sign Up Form</span> 
         </div>
-    </mat-toolbar>
+    </mat-toolbar> -->
+    <!-- navbar -->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="/home">LibMS</a></mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect href="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect href="/signup" routerLinkActive="active">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect href="/addbook" routerLinkActive="active">Add Book</a>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect href="/login" routerLinkActive="active">Login</a>
+                </li>
+                <router-outlet></router-outlet>
+                
+         
+            <!-- <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+                Basic dropdown<span class="caret"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
+                    <div class="divider dropdown-divider"></div>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+                </div>
+            </li> -->
+
+        </ul>
+        <!-- Links -->
+
+<!-- Search form -->
+        <!-- <form class="form-inline waves-light" mdbWavesEffect>
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            </div>
+        </form> -->
+     </links> 
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
     

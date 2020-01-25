@@ -11,3 +11,14 @@ export interface IUser{
     userBirthDate: string;
 
 }
+export interface IBook{
+    $key?:string;
+    bookTitle: string;
+    bookSubTitle:string;
+    bookAuthor1:string;
+    bookAuthor2:string;
+    bookAuthor3:string;
+    bookPublisher: string;
+    bookPrice:string;
+    bookRadioGenre:string;
+}

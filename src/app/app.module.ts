@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from './../environments/environment';
-import { FormComponent } from './form/form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule,MatNativeDateModule,MatFormFieldModule,MatDatepickerModule,MatExpansionModule,MatGridListModule,MatRadioModule,MatSidenavModule,MatToolbarModule,MatButtonModule,MatCardModule,MatTooltipModule,MatIconModule,MatBadgeModule,MatProgressSpinnerModule, MatInput } from '@angular/material';
 import { NavbarsComponent } from './navbars/navbars.component';
@@ -19,6 +18,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserService} from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { ShowBookComponent } from './show-book/show-book.component';
 
 const appRoutes:Routes=[
   {
@@ -29,16 +30,23 @@ const appRoutes:Routes=[
   },
   {
     path:'addbook',component:AddbookComponent
+  },
+  {
+    path:'login',component:LoginComponent
+  },
+  {
+    path:'showBook',component:ShowBookComponent
   }
 ]
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
     NavbarsComponent,
     HomeComponent,
     SignupComponent,
-    AddbookComponent
+    AddbookComponent,
+    LoginComponent,
+    ShowBookComponent
   ],
   imports: [
     HttpClientModule,

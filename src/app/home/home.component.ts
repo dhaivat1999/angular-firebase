@@ -11,16 +11,20 @@ import { FirebaseServiceService } from '../services/firebase-service.service';
   providers: [NgbCarouselConfig]
 })
 export class HomeComponent implements OnInit {
-  users:IUser[]; 
-  userName:String;
+  user:IUser[]; 
+  userList:IUser[];
+  userArray:String[];
   getUserName(){
         this.firebaseService.getUsersFromFirebase().snapshotChanges().forEach(usersSnapshot => {
-          usersSnapshot.forEach(userSnapshot =>{
+          this.userList=[];
+                    usersSnapshot.forEach(userSnapshot =>{
               let user=userSnapshot.payload.toJSON();
               user['$key']=userSnapshot.key;
-              this.userName=user['userFirstName'];
+               this.userList.push(user as IUser);
+            console.log( this.userList[0].userEmail);
           });
         });
+       
   }
  // images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   constructor(private firebaseService: FirebaseServiceService) {  
