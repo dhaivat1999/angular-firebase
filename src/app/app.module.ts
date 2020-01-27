@@ -20,6 +20,9 @@ import {UserService} from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ShowBookComponent } from './show-book/show-book.component';
+import { LogoutComponent } from './logout/logout.component';
+import { FooterComponent } from './footer/footer.component';
+import { Navbar2Component } from './navbar2/navbar2.component';
 
 const appRoutes:Routes=[
   {
@@ -36,6 +39,12 @@ const appRoutes:Routes=[
   },
   {
     path:'showBook',component:ShowBookComponent
+  },
+  {
+    path:'logout',component:LogoutComponent
+  },
+  {
+    path:'navbar',component:Navbar2Component
   }
 ]
 @NgModule({
@@ -46,7 +55,10 @@ const appRoutes:Routes=[
     SignupComponent,
     AddbookComponent,
     LoginComponent,
-    ShowBookComponent
+    ShowBookComponent,
+    LogoutComponent,
+    FooterComponent,
+    Navbar2Component
   ],
   imports: [
     HttpClientModule,

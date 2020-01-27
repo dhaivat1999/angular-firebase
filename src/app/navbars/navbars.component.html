@@ -10,7 +10,7 @@
         </div>
     </mat-toolbar> -->
     <!-- navbar -->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark blue">
 
     <!-- Navbar brand -->
     <mdb-navbar-brand><a class="navbar-brand" href="/home">LibMS</a></mdb-navbar-brand>
@@ -23,15 +23,20 @@
             <li class="nav-item">
                 <a class="nav-link waves-light" mdbWavesEffect href="/home" routerLinkActive="active">Home</a>
             </li>
-            <li class="nav-item">
+        </ul>
+        <ul class="navbar-nav ml=auto">
+            <li class="nav-item" *ngIf="checkLogin == false">
                 <a class="nav-link waves-light" mdbWavesEffect href="/signup" routerLinkActive="active">Sign Up</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="checkLogin == true">
                 <a class="nav-link waves-light" mdbWavesEffect href="/addbook" routerLinkActive="active">Add Book</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="checkLogin == false">
                     <a class="nav-link waves-light" mdbWavesEffect href="/login" routerLinkActive="active">Login</a>
                 </li>
+            <li class="nav-item" *ngIf="checkLogin == true">
+                <a class="nav-link waves-light" mdbWavesEffect href="/logout" routerLinkActive="active">Logout</a>
+            </li>
                 <router-outlet></router-outlet>
                 
          
@@ -60,5 +65,34 @@
     <!-- Collapsible content -->
 
 </mdb-navbar>
+<!--Navbar-->
+<!-- <mdb-navbar SideClass="navbar navbar-1 navbar-dark purple" [containerInside]="false">
+
+  
+    <mdb-navbar-brand>
+      <a class="navbar-brand" href="#">Navbar</a>
+    </mdb-navbar-brand>
+  
+    <links>
+  
+     
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link waves-light" mdbWavesEffect>Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect>Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+        </li>
+      </ul>
+    
+    </links> 
+  
+  </mdb-navbar> -->
+  <!--/.Navbar-->
 <!--/.Navbar-->
     

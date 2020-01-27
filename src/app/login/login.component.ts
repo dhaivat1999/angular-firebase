@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 import { FirebaseServiceService } from '../services/firebase-service.service';
 import { stringify } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   userCheckEmail:string;
   userCheckPassword:string;
   counter:number;
-  constructor(private firebaseService:FirebaseServiceService,private router:Router) { }
+  constructor(private firebaseService:FirebaseServiceService,private router:Router,private authService:AuthService) { }
   submit(loginForm)
   {
     this.userCheckEmail=loginForm.value.loginEmail;
@@ -34,11 +35,12 @@ export class LoginComponent implements OnInit {
            this.counter=this.userList.length;
            for(let i=0;i < this.userList.length; i++) 
            {
-              this.userEmail=(this.userList[i].userEmail);
-              this.userPassword=(this.userList[i].userPassword);
-           
-              if(this.userEmail.localeCompare(this.userCheckEmail) && this.userPassword.localeCompare(this.userCheckPassword))
+              this.userEmail=this.userList[i].userEmail.toString();
+              this.userPassword=this.userList[i].userPassword.toString();
+              if(this.userEmail === this.userCheckEmail  && this.userPassword === this.userCheckPassword)
+              // if(this.userCheckEmail=='admin' && this.userCheckPassword=='admin')
               {
+                this.authService.setLoggedIn();
                 console.log("User exists");
                 console.log(this.userEmail);
                 console.log(this.userPassword);

@@ -1,13 +1,7 @@
 <app-navbars>
 </app-navbars>
-<mat-sidenav-container>
-        <mat-sidenav [(opened)]="opened" mode="side">
-                <button mat-button color="accent">Home</button>
-                <button mat-button color="accent" >Sign Up</button>
-                <button mat-button color="accent" >Sign Up Form</button>
-        </mat-sidenav>
-        <mat-sidenav-content>
-            <mat-icon (click)="opened=!opened" color="primary">reorder</mat-icon>
+
+      
             <mat-card>
                     <mat-card-header>
                         <h3>Sign Up Form</h3>
@@ -111,7 +105,7 @@
                                 <mat-card-actions>
                                         <button type="submit" [disabled]="userForm.invalid" mdbBtn gradient="aqua"  >Sign Up</button>
                                         </mat-card-actions>
-                                        <button class="btn btn-warning" type="button" (click)="resetForm()">Reset Form</button>
+                                        <!-- <button class="btn btn-warning" type="button" (click)="resetForm()">Reset Form</button> -->
                                         <!-- <button mdbBtn type="button" gradient="aqua" rounded="true" mdbWavesEffect>Aqua</button> -->
                                         
                                        
@@ -127,7 +121,7 @@
                         <!-- <button mdbBtn floating="true" size="lg" color="red" class="waves-light" mdbPageScroll href="#top-section" mdbWavesEffect style="right:35px; bottom:35px;" [pageScrollDuration]="750">
                                 <mdb-icon fas icon="arrow-up"></mdb-icon>
                                     </button> -->
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+      
+    <app-footer></app-footer>
     
    
