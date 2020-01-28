@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import { IUser,IBook } from './../interfaces/users';
+import {AngularFirestore,AngularFirestoreCollection} from 'angularfire2/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseServiceService {
+
+  db:string;
   private userList:AngularFireList<any>;
   private bookList:AngularFireList<any>;
-  constructor(
-    private firebase: AngularFireDatabase
-  ) {
+  constructor(private firebase: AngularFireDatabase){
     this.userList=this.firebase.list('users');
     this.bookList=this.firebase.list('books');
    }

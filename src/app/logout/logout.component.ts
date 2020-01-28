@@ -14,7 +14,8 @@ export class LogoutComponent implements OnInit {
    }
 
   ngOnInit() {
-    localStorage.removeItem('loggedIn');
+  
+    sessionStorage.setItem('loggedIn','false');
     this.router.navigate(['/home']);
   }
 

@@ -23,6 +23,10 @@ import { ShowBookComponent } from './show-book/show-book.component';
 import { LogoutComponent } from './logout/logout.component';
 import { FooterComponent } from './footer/footer.component';
 import { Navbar2Component } from './navbar2/navbar2.component';
+import { PhoneLoginComponent } from './phone-login/phone-login.component';
+import { Window } from 'selenium-webdriver';
+import { WindowService } from './services/window.service';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 const appRoutes:Routes=[
   {
@@ -44,7 +48,7 @@ const appRoutes:Routes=[
     path:'logout',component:LogoutComponent
   },
   {
-    path:'navbar',component:Navbar2Component
+    path:'auth',component:PhoneLoginComponent
   }
 ]
 @NgModule({
@@ -58,7 +62,8 @@ const appRoutes:Routes=[
     ShowBookComponent,
     LogoutComponent,
     FooterComponent,
-    Navbar2Component
+    Navbar2Component,
+    PhoneLoginComponent
   ],
   imports: [
     HttpClientModule,
@@ -86,6 +91,7 @@ const appRoutes:Routes=[
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
+    AngularFirestoreModule.enablePersistence(),
     MDBBootstrapModule.forRoot()
     //  NgTemplate,  
      
@@ -98,7 +104,8 @@ const appRoutes:Routes=[
     // MatFormField
   ],
   providers: [
-    UserService
+    UserService,
+    WindowService
   ],
   bootstrap: [AppComponent]
 })

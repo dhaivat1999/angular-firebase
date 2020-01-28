@@ -12,10 +12,12 @@ export class SignupComponent implements OnInit {
   hide = true;
   userGender:String;
   genders:String[];
- 
+ userForms:String[]
   constructor(private FirebaseServiceService:FirebaseServiceService,private router:Router) { }
   submit(userForm)
   {
+    this.userForms=userForm.value;
+    // this.router.navigate(['/auth'] );
     console.log("Form Submitted",userForm);
     this.FirebaseServiceService.addUserToFirebase(userForm.value);
     this.router.navigate(['/login'])

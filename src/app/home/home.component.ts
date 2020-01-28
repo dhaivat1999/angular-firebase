@@ -15,6 +15,9 @@ export class HomeComponent implements OnInit {
   user:IUser[]; 
   userList:IUser[];
   userArray:String[];
+  loggedOut(){
+    sessionStorage.removeItem('loggedIn');
+  }
   getUserName(){
         this.firebaseService.getUsersFromFirebase().snapshotChanges().forEach(usersSnapshot => {
           this.userList=[];

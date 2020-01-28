@@ -1,10 +1,10 @@
-<div class="row" >
-        <div class="col-md-4 mx-auto my-5">
+<div class="card-group" >
+      
           <!--Card-->
-          <mdb-card dark="true">
+          <mdb-card dark="true" *ngFor="let book of bookList">
       
             <!--Card image-->
-            <div class="view overlay waves-light" mdbWavesEffect>
+            <div class="view rgba-black-slight waves-light" mdbWavesEffect>
               <!-- <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2821%29.jpg"></mdb-card-img> -->
               <a>
                 <div class="mask rgba-white-slight"></div>
@@ -14,13 +14,14 @@
       
             <!--Card content-->
             <mdb-card-body class="elegant-color white-text">
-              <a class="activator px-3 mr-2">
+              <a class="ma">
                 <!-- <mdb-icon fas icon="share-alt" class="white-text"></mdb-icon> -->
               </a>
       
               <!--Title-->
               <mdb-card-title> 
-                <h1>Name:<div [innerHTML]="bookTitles"></div></h1>
+                <div class="colo"></div>
+                <h1>Name:     <div class="colo">{{book.bookTitle}} </div></h1>
               </mdb-card-title>
       
               <hr class="hr-light">
@@ -28,14 +29,14 @@
               <!--Text-->
       
               <mdb-card-text class="white-text">
-                <h3 >Subtitle:<div [innerHTML]="bookSubTitles"></div></h3>
-                <h3> Author:<div [innerHTML]="bookAuthor1s"></div></h3>
-                <h3> Author:<div [innerHTML]="bookAuthor2s"></div></h3>
-                <h3> Author:<div [innerHTML]="bookAuthor3s"></div></h3>
-                <h3> Publication:<div [innerHTML]="bookPublications"></div></h3>
-                <h3> Genre:<div [innerHTML]="bookGenres"></div></h3>
+               <h3 >Subtitle:</h3> <h3 class="colo">{{book.bookSubTitle}}</h3>
+               <h3 >Author:</h3>      <h3 class="colo">  {{book.bookAuthor1}}</h3>
+               <h3 >Author:</h3>        <h3 class="colo"> {{book.bookAuthor2}}</h3>
+               <h3 >Author:</h3>    <h3 class="colo"> {{book.bookAuthor3}}</h3>
+               <h3>Publication:</h3>     <h3 class="colo"> {{book.bookPublisher}}</h3>
+               <h3 >Genre:</h3>     <h3 class="colo"> {{book.bookRadioGenre}}</h3>
                 <hr>
-                <h3> Price:<div [innerHTML]="bookPrices"></div></h3>
+             <h3>Price:</h3>   <h3 class="colo"> {{book.bookPrice}}</h3>
               </mdb-card-text>
               <!-- <button (click)="getBook()">Click to check</button> -->
               <a href="#!" class="white-text d-flex justify-content-end">
@@ -49,5 +50,5 @@
             <!--/.Card content-->
           </mdb-card>
           <!--/.Card-->
-        </div>
+        
       </div>
