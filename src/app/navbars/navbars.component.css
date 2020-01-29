@@ -27,5 +27,6 @@ a{
     font-size: 20px
 }
 mdb-navbar .navbar.navbar-2 .navbar-toggler-icon {
-    background-image: url('https://mdbootstrap.com/img/svg/hamburger2.svg?color=fff');
+    background-color: #2E2E2E;
+    color:#2E2E2E;
 }

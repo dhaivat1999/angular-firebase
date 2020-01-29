@@ -17,7 +17,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserService} from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ShowBookComponent } from './show-book/show-book.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -27,6 +27,12 @@ import { PhoneLoginComponent } from './phone-login/phone-login.component';
 import { Window } from 'selenium-webdriver';
 import { WindowService } from './services/window.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AdminComponent } from './admin/admin/admin.component';
+import { HeaderComponent } from './admin/header/header.component';
+import { StatsComponent } from './admin/stats/stats.component';
+import { ShowBook2Component } from './show-book2/show-book2.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+
 
 const appRoutes:Routes=[
   {
@@ -49,6 +55,12 @@ const appRoutes:Routes=[
   },
   {
     path:'auth',component:PhoneLoginComponent
+  },
+  {
+    path:'admin',component:AdminComponent
+  },
+  {
+    path:'stats',component:StatsComponent
   }
 ]
 @NgModule({
@@ -63,7 +75,12 @@ const appRoutes:Routes=[
     LogoutComponent,
     FooterComponent,
     Navbar2Component,
-    PhoneLoginComponent
+    PhoneLoginComponent,
+    AdminComponent,
+    HeaderComponent,
+    StatsComponent,
+    ShowBook2Component
+   
   ],
   imports: [
     HttpClientModule,
@@ -105,8 +122,12 @@ const appRoutes:Routes=[
   ],
   providers: [
     UserService,
-    WindowService
-  ],
+    WindowService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

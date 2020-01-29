@@ -1,0 +1,43 @@
+
+<!-- Default form subscription -->
+<mdb-card>
+ 
+  <mdb-card-body>
+    <mdb-card-title>
+      <h4>Welcome Administrator</h4>
+    </mdb-card-title>
+
+    <mdb-card-text>
+        <form #loginForm="ngForm" (ngSubmit)="submit(loginForm)" class="text-center border border-light p-5">
+
+            <p class="h4 mb-4">Login</p>
+          
+            <p>Administrator Id and password required</p>
+          
+            <!-- <div class="md-form md-outline">
+          
+                        <label for="loginEmail">Enter Email</label>
+                    <input type="email" name="loginEmail" required class="form-control mb-4"  pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" mdbInput #loginEmail="ngModel" ngModel>
+                    <div *ngIf="loginEmail.touched && loginEmail.invalid" class="alert alert-danger" role="alert">
+                        <p *ngIf="loginEmail.errors.required">Email is a neccesary field</p>
+                        <p *ngIf="loginEmail.errors.pattern">Email is invalid</p>
+                    </div>
+                        </div> -->
+            <!-- Name -->
+            <input type="text"  mdbInput ngModel name="adminId" #adminId="ngModel" class="form-control mb-4" placeholder="Admin Id">
+          
+            <!-- Email -->
+            <input type="password" name="adminPassword" ngModel #adminPassword="ngModel" class="form-control mb-4" placeholder="Admin Password">
+          
+            <!-- Sign in button -->
+            <button mdbBtn color="info" block="true" type="submit">Sign in</button>
+          
+          
+          </form>
+    </mdb-card-text>
+
+    <!-- <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a> -->
+  </mdb-card-body>
+</mdb-card>
+
+      <!-- Default form subscription -->

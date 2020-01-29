@@ -18,14 +18,30 @@ mat-sidenav{
 }
 label{
     font-size:15px;
+    text-emphasis-color: black;
+    color:black;
+
 }
 input{
     font-size: 15px;
+    
 }
 button{
     font-size: 15px;
 }
-
+form{
+    
+ 
+}
+mat-card-content{
+  
+}
+mat-card{
+    
+}
+body{
+  
+}
 /* .ng-invalid .ng-touched {
 border:1px  solid red;
 } */

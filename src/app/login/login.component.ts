@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   userCheckPassword:string;
   query:AngularFireList<any>;
   userPassword:string;
-
+  hide:true;
 
 users:any;
 
@@ -62,22 +62,22 @@ users:any;
       this.query=this.db.list('/users',ref => ref.orderByChild('userEmail').equalTo(this.userCheckEmail));
       this.query.valueChanges()
       .subscribe(data => {
-            if(data[0].false)
-            {
-              
-              alert("Incorrect Email or Password");
-            }
-            else{
-              this.userPassword=data[0].userPassword;
-              if(this.userPassword == this.userCheckPassword)
-              {           
-                this.authService.setLoggedIn();
-                this.router.navigate(['\home']);
-              }
-              else{
-                alert("Incorrect Email or Password");
-              }
-            }
+                if(data[0])
+                {
+                  this.userPassword=data[0].userPassword;
+                  if(this.userPassword == this.userCheckPassword)
+                  {           
+                    this.authService.setLoggedIn();
+                    this.router.navigate(['\home']);
+                  }
+                  else{
+                    alert("Incorrect Email or Password");
+                  }
+                }
+                else{
+                  alert("Incorrect Email or Password");
+                }
+          
      });  
     
       //  if(this.userCheckEmail=='admin' && this.userCheckPassword=='admin')

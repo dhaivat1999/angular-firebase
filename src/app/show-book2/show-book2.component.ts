@@ -3,18 +3,16 @@ import { IBook} from '../interfaces/users';
 import { FirebaseServiceService } from '../services/firebase-service.service';
 import { stringify } from '@angular/compiler/src/util';
 @Component({
-  selector: 'app-show-book',
-  templateUrl: './show-book.component.html',
-  styleUrls: ['./show-book.component.scss']
+  selector: 'app-show-book2',
+  templateUrl: './show-book2.component.html',
+  styleUrls: ['./show-book2.component.scss']
 })
-export class ShowBookComponent implements OnInit {
+export class ShowBook2Component implements OnInit {
   book:IBook[]; 
   bookList:IBook[];
-
   constructor(private firebaseService:FirebaseServiceService) { }
 
   ngOnInit() {
-   
     this.firebaseService.getBooksFromFirebase().snapshotChanges().forEach(booksSnapshot => {
       this.bookList=[];
                 booksSnapshot.forEach(bookSnapshot =>{
@@ -23,7 +21,6 @@ export class ShowBookComponent implements OnInit {
            this.bookList.push(book as IBook)          
       });
     });
- 
   }
 
 }

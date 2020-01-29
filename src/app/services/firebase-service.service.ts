@@ -8,9 +8,11 @@ import {AngularFirestore,AngularFirestoreCollection} from 'angularfire2/firestor
 })
 export class FirebaseServiceService {
 
-  db:string;
+  flags:boolean;
+  strreturn:string;
   private userList:AngularFireList<any>;
   private bookList:AngularFireList<any>;
+  query:AngularFireList<any>;
   constructor(private firebase: AngularFireDatabase){
     this.userList=this.firebase.list('users');
     this.bookList=this.firebase.list('books');
@@ -28,9 +30,10 @@ export class FirebaseServiceService {
      let $key=user.$key;
      this.userList.update($key,user);
    }
-   deleteAUserFromFirebase($key:string)
+   deleteAUserFromFirebase(email:string)
    {
-      this.userList.remove($key);
+     
+      this.userList.remove(email);
    }
    addBookToFirebase(book:IBook)
    {
@@ -39,4 +42,6 @@ export class FirebaseServiceService {
    getBooksFromFirebase(){
      return this.bookList;
    }
+   
 }
+

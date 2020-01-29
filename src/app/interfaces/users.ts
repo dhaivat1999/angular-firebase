@@ -9,7 +9,7 @@ export interface IUser{
     userConfirmPassword: string;
     radioGender:string;
     userBirthDate: string;
-
+    $key1:string;
 }
 export interface IBook{
     $key?:string;

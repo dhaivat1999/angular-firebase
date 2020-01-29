@@ -1,0 +1,39 @@
+<mdb-carousel  class="carousel slide carousel-fade" [animation]="'fade'">
+        <mdb-carousel-item *ngFor="let book of bookList">
+            <mdb-card>
+               <!-- <mdb-card-img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" alt="Card image cap"></mdb-card-img> -->
+              <mdb-card-body>
+                    <div class="bod">
+                <mdb-card-title>
+                        
+                        <h1 class="txtcolor">Name:     <div class="colo">{{book.bookTitle}} </div></h1>
+                        <hr>
+                </mdb-card-title>
+            
+                <mdb-card-text>     
+               
+                      <h3  class="txtcolor">Subtitle:</h3> <h3 class="colo">{{book.bookSubTitle}}</h3>
+                    <h3 class="txtcolor">Author:</h3>      <h3 class="colo">  {{book.bookAuthor1}}</h3>
+                    <h3  class="txtcolor">Author:</h3>        <h3 class="colo"> {{book.bookAuthor2}}</h3>
+                    <h3 class="txtcolor" >Author:</h3>    <h3 class="colo"> {{book.bookAuthor3}}</h3>
+                    <h3 class="txtcolor">Publication:</h3>     <h3 class="colo"> {{book.bookPublisher}}</h3>
+                    <h3 class="txtcolor" >Genre:</h3>     <h3 class="colo"> {{book.bookRadioGenre}}</h3>
+                     <hr class="txtcolor">
+                  <h3 class="txtcolor">Price:</h3>   <h3 class="colo"> {{book.bookPrice}}</h3>
+                 
+                </mdb-card-text>
+            </div>
+              </mdb-card-body>
+            </mdb-card>
+                   
+          
+             <hr class="hr-light">
+             
+             
+            
+         
+        
+          
+        </mdb-carousel-item>
+      
+      </mdb-carousel>
