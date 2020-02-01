@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 // import { AngularFireDatabase } from 'angularfire2/database'
 // import { AngularFirestoreCollection } from 'angularfire2/firestore';
 // import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, snapshotChanges } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 // import * as functions from "firebase-functions";
 // import * as admin from "firebase-admin";
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   query:AngularFireList<any>;
   userPassword:string;
   hide:true;
-
+key:string;
 users:any;
 
 
@@ -47,18 +47,18 @@ users:any;
     this.userCheckEmail=loginForm.value.loginEmail;
     this.userCheckPassword=loginForm.value.loginPassword;
     
-    // this.firebaseService.getUsersFromFirebase().snapshotChanges().forEach(usersSnapshot => {
-    //   this.userList=[];
-    //   usersSnapshot.forEach(userSnapshot =>{
-    //       let user=userSnapshot.payload.toJSON();
-    //       user['$key']=userSnapshot.key;
-    //        this.userList.push(user as IUser);
-    //        this.counter=this.userList.length;
-      //      for(let i=0;i < this.userList.length; i++) 
-      //      {
-      //         this.userEmail=this.userList[i].userEmail.toString();
-      //         this.userPassword=this.userList[i].userPassword.toString();
-      //         if(this.userEmail === this.userCheckEmail  && this.userPassword === this.userCheckPassword)
+  //   this.query=this.db.list('/users',ref => ref.orderByChild('userEmail').equalTo(this.userCheckEmail));
+  //   this.query.snapshotChanges().forEach(usersSnapshot =>{
+  //     this.userList=[];
+  //     usersSnapshot.forEach(userSnapshot => {
+  //       let user=userSnapshot.payload.toJSON();
+  //       user['key']=userSnapshot.key;
+  //       this.userList.push(user as IUser)
+  //       this.key=this.userList[0].$key;
+  //       console.log(this.key);
+  //     })
+  // })
+  
       this.query=this.db.list('/users',ref => ref.orderByChild('userEmail').equalTo(this.userCheckEmail));
       this.query.valueChanges()
       .subscribe(data => {
@@ -66,7 +66,8 @@ users:any;
                 {
                   this.userPassword=data[0].userPassword;
                   if(this.userPassword == this.userCheckPassword)
-                  {           
+                  {       
+                    this.authService.authLogin();    
                     this.authService.setLoggedIn();
                     this.router.navigate(['\home']);
                   }
@@ -80,28 +81,7 @@ users:any;
           
      });  
     
-      //  if(this.userCheckEmail=='admin' && this.userCheckPassword=='admin')
-      //      {
-      //    
-      // //           console.log("User exists");
-      // //           console.log(this.userEmail);
-      // //           console.log(this.userPassword);
-      // //           console.log(this.userCheckEmail);
-      // //           console.log(this.userCheckPassword);
-      //           this.router.navigate(['/home']);
-      //           break;
-        // }
-      //           alert("Incorrect email and password");
-      //           console.log("user does not exists");
-      //           console.log(this.userEmail);
-      //           console.log(this.userPassword);
-      //           console.log(this.userCheckEmail);
-      //           console.log(this.userCheckPassword);
-      //       // this.userList[i]
-      //      }
-      //  //    console.log(loginForm.value.loginEmail);
-      //   //console.log( this.userList[0].userEmail);
-  
+   
  
 //  console.log(this.userEmail);
 //  console.log(this.userPassword)
@@ -118,3 +98,15 @@ users:any;
 }
 
 }
+  // this.firebaseService.getUsersFromFirebase().snapshotChanges().forEach(usersSnapshot => {
+    //   this.userList=[];
+    //   usersSnapshot.forEach(userSnapshot =>{
+    //       let user=userSnapshot.payload.toJSON();
+    //       user['$key']=userSnapshot.key;
+    //        this.userList.push(user as IUser);
+    //        this.counter=this.userList.length;
+      //      for(let i=0;i < this.userList.length; i++) 
+      //      {
+      //         this.userEmail=this.userList[i].userEmail.toString();
+      //         this.userPassword=this.userList[i].userPassword.toString();
+      //         if(this.userEmail === this.userCheckEmail  && this.userPassword === this.userCheckPassword)

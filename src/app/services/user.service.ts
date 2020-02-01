@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {IUser } from './../interfaces/users';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { map,catchError } from 'rxjs/operators';
 
 
 
@@ -9,14 +11,18 @@ import { HttpClient } from 'selenium-webdriver/http';
 })
 export class UserService {
 
-   private _users: IUser[]=[
-  //  {userFirstName:"dhaivat",userLastName: "desai",userEmail: "dhaivat1999@gmail.com",userPhone:7874628240 ,userPassword: "Dhaivat123", userConfirmPassword: "Dhaivat123",userBirthDate:"2020-01-26T18:30:00.000Z"}
-   ];
-   
-  constructor() {}
 
-    getUsers(){
-          return this._users;
-    }
+  constructor(private http:HttpClient) {}
+
+  getAllposts(){
+    return this.http.get('https://jsonplaceholder.typicode.csom/posts', {responseType:'json'})
+    .pipe(
+        catchError(this.handleError)
+    )
+  }
+  handleError(error:HttpErrorResponse){
+    console.log(error);
+     return throwError(error);
+  }
    
 }

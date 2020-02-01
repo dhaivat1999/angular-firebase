@@ -64,6 +64,17 @@ export class SignupComponent implements OnInit {
       }
    });
 }
+tryingOtp(){
+//   this.query=this.db.list('/users',ref => ref.orderByChild('userEmail').equalTo(email));
+//   this.query.snapshotChanges().forEach(booksSnapshot =>{
+//     this.userList=[];
+//     booksSnapshot.forEach(booksSnapshot => {
+//       let book=booksSnapshot.payload.toJSON();
+//       book['key']=booksSnapshot.key;
+//       this.userList.push(user as IUser)
+//     })
+// })
+}
   
 
   ngOnInit() {

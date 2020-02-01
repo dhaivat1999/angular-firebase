@@ -12,13 +12,14 @@ export class StatsComponent implements OnInit {
   constructor(private auth:AuthService,private router:Router) { }
 
   ngOnInit() {
-    console.log(localStorage.getItem('adminOn'))
-    if(localStorage.getItem('adminOn') !== 'true')
-    { 
-      alert("Sorry You dont have Persmission! Only Admin user is allowed");
-          this.router.navigate(['\home']);
-    }
+  //   console.log(localStorage.getItem('adminOn'))
+  //   if(localStorage.getItem('adminOn') !== 'true')
+  //   { 
+  //     alert("Sorry You dont have Persmission! Only Admin user is allowed");
+  //         this.router.navigate(['\home']);
+  //   }
 
-  }
+  // }
 
+}
 }

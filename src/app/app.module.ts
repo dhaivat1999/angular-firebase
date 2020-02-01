@@ -32,7 +32,8 @@ import { HeaderComponent } from './admin/header/header.component';
 import { StatsComponent } from './admin/stats/stats.component';
 import { ShowBook2Component } from './show-book2/show-book2.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-
+import { TestComponent } from './test/test.component';
+import {AuthGuard } from './auth.guard';
 
 const appRoutes:Routes=[
   {
@@ -61,6 +62,12 @@ const appRoutes:Routes=[
   },
   {
     path:'stats',component:StatsComponent
+  },
+  {
+    path:'showbook',component:ShowBookComponent
+  },
+  {
+    path:'test',component:TestComponent
   }
 ]
 @NgModule({
@@ -79,7 +86,8 @@ const appRoutes:Routes=[
     AdminComponent,
     HeaderComponent,
     StatsComponent,
-    ShowBook2Component
+    ShowBook2Component,
+    TestComponent
    
   ],
   imports: [
@@ -123,11 +131,13 @@ const appRoutes:Routes=[
   providers: [
     UserService,
     WindowService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass:TokenInterceptorService,
-      multi:true
-    } ],
+    AuthGuard
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass:TokenInterceptorService,
+    //   multi:true
+    // } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

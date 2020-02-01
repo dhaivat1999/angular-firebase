@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IBook} from '../interfaces/users';
+import { IBook, IUser} from '../interfaces/users';
 import { FirebaseServiceService } from '../services/firebase-service.service';
 import { stringify } from '@angular/compiler/src/util';
 @Component({
@@ -10,6 +10,8 @@ import { stringify } from '@angular/compiler/src/util';
 export class ShowBook2Component implements OnInit {
   book:IBook[]; 
   bookList:IBook[];
+  user:IUser[];
+  userList:IUser[];
   constructor(private firebaseService:FirebaseServiceService) { }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class ShowBook2Component implements OnInit {
            this.bookList.push(book as IBook)          
       });
     });
+    
   }
 
 }

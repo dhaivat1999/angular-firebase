@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn') || 'false');
-  constructor() { }
+private authLoginStatus:boolean;  
+constructor() { }
   setLoggedIn(){
       // localStorage.setItem('loggedIn','true');
       sessionStorage.setItem('loggedIn','true');
@@ -13,6 +14,15 @@ private loggedInStatus=JSON.parse(sessionStorage.getItem('loggedIn') || 'false')
   get isLoggedIn() {
     return JSON.parse(sessionStorage.getItem('loggedIn') || this.loggedInStatus.toString())
   }
+  authLogin(){
+    this.authLoginStatus=true;
+    console.log(this.authLoginStatus)
+  }
+  get isAuthLogin(){
+    console.log(this.authLoginStatus)
+    return this.authLoginStatus;
+  } 
+
   setAdminLogin(){
     localStorage.setItem('adminOn','true');
   }
