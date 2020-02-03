@@ -7,9 +7,6 @@ import { map } from "rxjs/operators";
  import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { BehavesubService } from '../services/behavesub.service';
-
-
-
 @Component({
   selector: 'app-phone-login',
   templateUrl: './phone-login.component.html',
@@ -18,8 +15,8 @@ import { BehavesubService } from '../services/behavesub.service';
 
 export class PhoneLoginComponent implements OnInit {
   state$:Observable<any>;
-  country:number;
-  phnNumber:number;
+  country:string;
+  phnNumber:string;
   windowRef: any;
   verificationCode: string;
   user: any;
@@ -38,57 +35,47 @@ export class PhoneLoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.behave.userKey.subscribe((data)=>{
+
+    this.behave.userKey
+    .subscribe((data)=>{
       this.userKey=data;
  })
-    // this.route.queryParams
-    // .subscribe(params.delEmail => {
-    //   this.userEmail = params.delEmail;
-    //   console.log(this.userEmail); // popular 
-    // });
-    this.route.queryParams.subscribe(params => {
-      this.userEmail=params.delEmail;
-  })    
-    this.windowRef = this.win.windowRef
+ this.windowRef = this.win.windowRef
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container')
-    this.windowRef.recaptchaVerifier.render();
-    // this.state$ = this.activatedRoute.paramMap
-    // .pipe(map(() => window.history.state))
-    // console.log(this.state$[0].delEmail.data);
-    
-      // this.product=history.state;
-     
-  
-    
-  }
-  sendLoginCode() {
 
-    const appVerifier = this.windowRef.recaptchaVerifier;
+    this.windowRef.recaptchaVerifier.render() 
+}
 
-    const num = this.e164;
 
-    firebase.auth().signInWithPhoneNumber(num, appVerifier)
-            .then(result => {
+ sendLoginCode() {
 
-                this.windowRef.confirmationResult = result;
+  const appVerifier = this.windowRef.recaptchaVerifier;
+  console.log(this.country)
+  console.log(this.phnNumber)
+  const num = this.e164;
 
-            })
-            .catch( error => console.log(error) );
+  firebase.auth().signInWithPhoneNumber(num, appVerifier)
+          .then(result => {
+              this.windowRef.confirmationResult = result;
+          })
+          .catch( error => console.log(error) );
 
-  }
-  verifyLoginCode() {
-    this.windowRef.confirmationResult
-                  .confirm(this.verificationCode)
-                  .then( result => {
-                    console.log("User Verified");
-                    // alert("User Verified")
-                    this.router.navigate(['\login']);
+}
 
-    })
-    .catch( 
-       
-        this.firebaseService.deleteAUserFromFirebase(this.userKey)
-        );
-  }
+verifyLoginCode() {
+  this.windowRef.confirmationResult
+                .confirm(this.verificationCode)
+                .then( result => {
+                this.router.navigate(['\home'])
+                  // this.user = result.user;
+
+  })
+  .catch(
+    this.firebaseService.deleteAUserFromFirebase(this.userKey),
+    alert("Incorrect OTP entered Please Signup again"),
+    this.router.navigate(['signup']),
+
+  );
+}
 
 }

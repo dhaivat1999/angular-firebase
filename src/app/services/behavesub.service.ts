@@ -11,7 +11,7 @@ export class BehavesubService {
   userList:IUser[];
   user:IUser[];
   gridSize=new BehaviorSubject(3);
-  userKey;
+  userKey=new BehaviorSubject('');
   query:AngularFireList<any>;
   checker:string[];
   userCheckEmail:string;
@@ -27,7 +27,7 @@ export class BehavesubService {
         user['key']=userSnapshot.key;
         this.userList.push(user as IUser)
         console.log(userSnapshot.key)
-        this.userKey=new BehaviorSubject(userSnapshot.key);
+        this.userKey.next(userSnapshot.key);
       })
   })
 
