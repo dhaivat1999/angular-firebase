@@ -30,10 +30,10 @@ export class FirebaseServiceService {
      let $key=user.$key;
      this.userList.update($key,user);
    }
-   deleteAUserFromFirebase(email:string)
+   deleteAUserFromFirebase($key:string)
    {
      
-      this.userList.remove(email);
+      this.userList.remove($key);
    }
    addBookToFirebase(book:IBook)
    {

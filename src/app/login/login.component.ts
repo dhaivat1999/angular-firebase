@@ -47,17 +47,7 @@ users:any;
     this.userCheckEmail=loginForm.value.loginEmail;
     this.userCheckPassword=loginForm.value.loginPassword;
     
-  //   this.query=this.db.list('/users',ref => ref.orderByChild('userEmail').equalTo(this.userCheckEmail));
-  //   this.query.snapshotChanges().forEach(usersSnapshot =>{
-  //     this.userList=[];
-  //     usersSnapshot.forEach(userSnapshot => {
-  //       let user=userSnapshot.payload.toJSON();
-  //       user['key']=userSnapshot.key;
-  //       this.userList.push(user as IUser)
-  //       this.key=this.userList[0].$key;
-  //       console.log(this.key);
-  //     })
-  // })
+   
   
       this.query=this.db.list('/users',ref => ref.orderByChild('userEmail').equalTo(this.userCheckEmail));
       this.query.valueChanges()

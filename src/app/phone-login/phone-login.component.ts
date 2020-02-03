@@ -6,6 +6,7 @@ import { FirebaseServiceService } from '../services/firebase-service.service';
 import { map } from "rxjs/operators";
  import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { BehavesubService } from '../services/behavesub.service';
 
 
 
@@ -23,7 +24,7 @@ export class PhoneLoginComponent implements OnInit {
   verificationCode: string;
   user: any;
   userEmail:string;
-  
+  userKey:string;
   // product;
   order: string;
   get e164() {
@@ -33,10 +34,13 @@ export class PhoneLoginComponent implements OnInit {
   
   // const num = this.country + this.phnNumber;
   // return `+${num}`;
-  constructor(private win: WindowService,private router:Router,private firebaseService:FirebaseServiceService,public route: ActivatedRoute) {
+  constructor(private win: WindowService,private router:Router,private firebaseService:FirebaseServiceService,public route: ActivatedRoute,private behave:BehavesubService) {
    }
 
   ngOnInit() {
+    this.behave.userKey.subscribe((data)=>{
+      this.userKey=data;
+ })
     // this.route.queryParams
     // .subscribe(params.delEmail => {
     //   this.userEmail = params.delEmail;
@@ -77,11 +81,13 @@ export class PhoneLoginComponent implements OnInit {
                   .confirm(this.verificationCode)
                   .then( result => {
                     console.log("User Verified");
-                    this.router.navigate(['\home']);
+                    // alert("User Verified")
+                    this.router.navigate(['\login']);
 
     })
     .catch( 
-        this.firebaseService.deleteAUserFromFirebase(this.userEmail)
+       
+        this.firebaseService.deleteAUserFromFirebase(this.userKey)
         );
   }
 

@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireList } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { BehavesubService } from '../services/behavesub.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -23,7 +24,7 @@ export class SignupComponent implements OnInit {
   flags:boolean;
   query:AngularFireList<any>;
   counter:number;
-  constructor(private FirebaseServiceService:FirebaseServiceService,private router:Router,private db:AngularFireDatabase,) { }
+  constructor(private FirebaseServiceService:FirebaseServiceService,private router:Router,private db:AngularFireDatabase,private behave:BehavesubService) { }
   submit(userForm)
   {
         // console.log(data.length)
@@ -35,9 +36,10 @@ export class SignupComponent implements OnInit {
                 this.checkUserExists(userForm.value.userEmail);
                 if(this.flags ==true)
                 {
+                this.behave.getUserKey(userForm.value.userEmail);
                 this.FirebaseServiceService.addUserToFirebase(userForm.value);
                 this.counter=1;
-                this.router.navigate(['\login']);
+                this.router.navigate(['\auth']);
                 }
                 // this.router.navigate(['\auth'],{queryParams: {delEmail:userForm.value.userEmail}});
               }
